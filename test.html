@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Game</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        #input-container {
+            display: none;
+        }
+        #output {
+            border: 1px solid #ccc;
+            padding: 20px;
+            min-height: 50px;
+        }
+        #output.editable {
+            border: 1px dashed #ccc;
+            cursor: text;
+        }
+    </style>
+</head>
+<body>
+    <div id="input-container">
+        <input type="text" id="input-latex">
+    </div>
+    <div id="output" class="editable" onclick="enableInput()"></div>
+
+    <script>
+        function renderMath() {
+            const input = document.getElementById('input-latex').value;
+            const output = document.getElementById('output');
+            output.innerHTML = `\\(${input}\\)`;
+            MathJax.typesetPromise([output]);
+        }
+
+        function enableInput() {
+            const inputContainer = document.getElementById('input-container');
+            const input = document.getElementById('input-latex');
+            const output = document.getElementById('output');
+
+            input.value = output.textContent;
+            output.classList.remove('editable');
+            inputContainer.style.display = 'block';
+            input.focus();
+
+            input.onblur = () => {
+                inputContainer.style.display = 'none';
+                output.classList.add('editable');
+                renderMath();
+            };
+        }
+
+        document.getElementById('input-latex').addEventListener('input', renderMath);
+    </script>
+</body>
+</html>
