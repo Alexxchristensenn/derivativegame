@@ -4,12 +4,25 @@ document.addEventListener("DOMContentLoaded", function() {
     const inputLatex = document.getElementById("input-latex");
     const submitBtn = document.getElementById("submit-btn");
     const errorMsg = document.getElementById("error-msg");
+    const scoreBox = document.getElementById("score");
+
+    let score = 0;
 
     //Try storing function/derivative pairs in a giant hash map!
+
+    //Hash map might actually be poor because how can you account for
+    //all the different possible ways of writing a?
     const funcMap = new Map();
     funcMap.set("1", {f: "2x^2", a: "4x"});
     funcMap.set("2", {f: "3x+1", a: "3"});
     funcMap.set("3", {f: "5x^3", a: "15x^2"});
+    funcMap.set("4", {f: "e^x", a: "e^x"});
+    funcMap.set("5", {f: "sin(x)", a: "cos(x)"});
+    funcMap.set("6", {f: "ln(x)", a: "1/x"});
+    funcMap.set("7", {f: "cos(x)", a: "-sin(x)"});
+    funcMap.set("8", {f: "10x^4", a: "40x^3"});
+    funcMap.set("9", {f: "10874", a: "0"});
+    funcMap.set("10", {f: "12x^2-8x+2", a: "24x-8"});
     
     function randomNum(){
         return Math.ceil(Math.random()*(funcMap.size));
@@ -55,8 +68,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 //alert("yayyy u got it right ya genius");
                 newFunc();
                 inputLatex.value = "";
+                score = score+1;
+                scoreBox.innerHTML = "Score: " + score;
             } else {
-                //alert("oh nooo thats wrong")
+                alert("oh nooo thats wrong. da answer is "+ans);
+                score = 0;
+                scoreBox.innerHTML = "Score: " + score;
             }
         } else {
             errorMsg.textContent = "Please enter a valid derivative.";

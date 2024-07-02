@@ -26,6 +26,33 @@ body {
     text-align: center;
 }
 
+.score {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: hsl(61, 95%, 78%);
+    border-bottom-right-radius: 15px;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 150px; /* Adjust width as needed */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: add a shadow for better visibility */
+}
+
+.score h1 {
+    font-size: 1.2em;
+    color: #23234c;
+    font-weight: 500;
+    margin-bottom: 0.5em;
+}
+
+#score {
+    font-size: 1.5em;
+    color: #23234c;
+}
+
 h3 {
     font-size: 1.2em;
     color: #23234c;
