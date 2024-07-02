@@ -1,7 +1,4 @@
 document.addEventListener("DOMContentLoaded", function() {
-    //JS currently does not represent updated (sans-calculator)
-    //elements. Modify JS to involve the correct
-    //elements, and then implement deriv functionality /:)
 
     const questionDiv = document.getElementById("question");
     const inputLatex = document.getElementById("input-latex");
