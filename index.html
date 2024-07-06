@@ -1,41 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Derivative Game</title>
 
-    <link href="https://fonts.googleapis.com/css2?family
+    <link
+      href="https://fonts.googleapis.com/css2?family
                 =Poppins:wght@500;600&display=swap"
-                rel="stylesheet"/>  
+      rel="stylesheet"
+    />
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
 
     <!-- MathJax CDN -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-</head>
-<body>
-    <div class="container">
-        <h3>Fill in the blank with the 
-            function's derivative!</h3>
-        <div id="question"></div>
-        <input id="input-latex" placeholder="Enter Derivative">
-        <div id="latex-output"></div>
-        <button id="submit-btn">Submit</button>
-        
-        <!--
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+  </head>
+  <body>
+    <div id="start-screen">
+      <h1>Welcome to Alex's very in-progress derivative game</h1>
+      <button id="start-btn">Start Game</button>
+    </div>
+
+    <div class="container hide">
+      <h3>Fill in the blank with the function's derivative!</h3>
+      <div id="question"></div>
+      <input id="input-latex" placeholder="Enter f '(x)" />
+      <div id="latex-output"></div>
+      <button id="submit-btn">Submit</button>
+
+      <!--
             Error Message:
             <p id="error-msg">Demo Error Message</p>
         -->
     </div>
 
-    <div class="score">
-        <div id="score">Score: 0</div>
+    <div class="score hide">
+      <div id="score">Score: 0</div>
+    </div>
+
+    <div class="end-screen hide">
+      <h1>Incorrect!</h1>
+      <p id="correct-ans">The correct answer was: </p>
+      <h2 id="final-score">Final score: </h2>
+      <button id="play-again">Play Again</button>
     </div>
 
     <!-- Place all JavaScript code at end of body -->
 
     <script src="index.js"></script>
-</body>
+  </body>
 </html>
