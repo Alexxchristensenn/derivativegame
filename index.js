@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(".score").classList.add("hide");
     document.querySelector('.end-screen').classList.remove('hide');
     //Not sure how to get you answered: xyz on new line...
-    document.getElementById('correct-ans').innerHTML = 'The correct answer was: ' + ans + ' You answered: '+incorrectAns;
+    document.getElementById('correct-ans').innerHTML = 'The correct answer was: ' + ans + '<br><br>You answered: '+incorrectAns;
     document.getElementById('final-score').textContent = 'Final score: ' + score;
   }
 

@@ -16,7 +16,7 @@ body {
 
 .container {
   background-color: hsl(61, 95%, 78%);
-  border-radius: 15px;
+  border-radius: 25px;
   max-width: 500px;
   width: 100%;
   padding: 2em;
@@ -132,6 +132,17 @@ h3 {
 
 #submit-btn {
   font-size: 1.2em;
+  font-weight: 600;
+  background-color: hsl(140, 89%, 70%);
+  border-radius: 20em;
+  border: none;
+  cursor: pointer;
+  color: #23234c;
+  padding: 0.6em 2em;
+  margin-top: 1.5em;
+  margin-bottom: 1em;
+  
+  /*font-size: 1.2em;
   font-weight: 500;
   background-color: hsl(140, 89%, 70%);
   border-radius: 0.3em;
@@ -141,7 +152,7 @@ h3 {
   padding: 0.6em 2em;
   margin-top: 1.5em;
   margin-bottom: 1em;
-  width: 125px;
+  width: 125px;*/
 }
 
 #submit-btn:hover {
