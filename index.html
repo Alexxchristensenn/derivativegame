@@ -5,32 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Derivative Game</title>
 
+    <!--Favicon-->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family
-                =Poppins:wght@500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
 
     <link rel="stylesheet" href="styles.css" />
-
-    <!-- MathJax CDN -->
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script
-      id="MathJax-script"
-      async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
-    ></script>
   </head>
   <body>
-    <div id="start-screen">
-      <h1>Welcome to Alex's very in-progress derivative game</h1>
+    <div class="start-screen">
+      <img src="logo.png" alt="derivative game logo">
+      <img src="derivatives.png" alt="derivatives title">
       <button id="start-btn">Start Game</button>
     </div>
 
     <div class="container hide">
       <h3>Fill in the blank with the function's derivative!</h3>
-      <div id="question"></div>
-      <input id="input-latex" placeholder="Enter f '(x)" />
+      <p><span id="question">4x^2</span></p>
+      <span id="input-latex"></span>
       <div id="latex-output"></div>
       <button id="submit-btn">Submit</button>
 
@@ -46,13 +44,28 @@
 
     <div class="end-screen hide">
       <h1>Incorrect!</h1>
-      <p id="correct-ans">The correct answer was: </p>
-      <h2 id="final-score">Final score: </h2>
+      <p id="correct-ans">The correct answer was:</p>
+      <h2 id="final-score">Final score:</h2>
       <button id="play-again">Play Again</button>
+      <button id="return-home">Return to Home</button>
     </div>
 
-    <!-- Place all JavaScript code at end of body -->
+    <!--Scrips-->
 
-    <script src="index.js"></script>
+    <!--JQuery (Necessary for MathQuill)-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!--MathQuill-->
+    <link rel="stylesheet" href="/mathquill-0.10.1/mathquill.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="/mathquill-0.10.1/mathquill.js"></script>
+    <script>
+      var MQ = MathQuill.getInterface(2);
+    </script>
+
+    <!--MathJS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.0.1/math.min.js"></script>
+
+    <script type="module" src="index.js"></script>
   </body>
 </html>

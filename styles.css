@@ -10,8 +10,44 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  height: 100vh;
   background-color: hsl(34, 95%, 74%);
+}
+
+.start-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.start-screen img:nth-child(1) {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 100px; /* Adjust as necessary */
+  height: auto;
+}
+
+.start-screen img:nth-child(2) {
+  width: 600px; /* Adjust as necessary */
+  height: auto;
+  margin-bottom: 2em;
+}
+
+.start-screen button {
+  font-size: 2;
+  font-weight: 600;
+  background-color: #6ef79c;
+  border-radius: 20em;
+  border: none;
+  cursor: pointer;
+  color: #23234c;
+  padding: 0.8em 2em;
 }
 
 .container {
@@ -141,18 +177,6 @@ h3 {
   padding: 0.6em 2em;
   margin-top: 1.5em;
   margin-bottom: 1em;
-  
-  /*font-size: 1.2em;
-  font-weight: 500;
-  background-color: hsl(140, 89%, 70%);
-  border-radius: 0.3em;
-  border: none;
-  cursor: pointer;
-  color: #23234c;
-  padding: 0.6em 2em;
-  margin-top: 1.5em;
-  margin-bottom: 1em;
-  width: 125px;*/
 }
 
 #submit-btn:hover {
@@ -161,6 +185,12 @@ h3 {
 
 #submit-btn:active {
   background-color: hsl(143, 7%, 78%);
+}
+
+#return-home {
+  margin-top: 2em;
+  font-size: smaller;
+  padding: 0.6em 1em;
 }
 
 #error-msg {
