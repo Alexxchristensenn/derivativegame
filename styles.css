@@ -25,6 +25,28 @@ body {
   position: relative;
 }
 
+.start-screen span{
+  color: #23234c;
+  text-transform: lowercase;
+  display: block;
+}
+
+.title{
+  font-size: 60px;
+  font-weight: 700;
+  letter-spacing: 8px;
+  margin-bottom: 70px;
+  animation: text 3s 1;
+}
+
+@keyframes text {
+  0%{
+    color:hsl(34, 95%, 74%);
+    margin-bottom: -70px;
+    letter-spacing: -10px;
+  }
+}
+
 .start-screen img:nth-child(1) {
   position: absolute;
   top: 20px;
@@ -106,7 +128,7 @@ h3 {
 .end-screen {
   position: absolute;
   width: 50em;
-  top: 30%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: hsl(61, 95%, 78%);
