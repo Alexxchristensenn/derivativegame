@@ -6,8 +6,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const submitBtn = document.getElementById("submit-btn");
   const errorMsg = document.getElementById("error-msg");
   const scoreBox = document.getElementById("score");
+  const timerBar = document.getElementsByClassName("timer-bar")[0];
 
   let score = 0;
+  let timerIntervalId = 0;
 
   //Try storing function/derivative pairs in a giant hash map!
 
@@ -66,6 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
     scoreBox.innerHTML = "Score: " + score;
     document.querySelector(".container").classList.remove("hide");
     document.querySelector(".score").classList.remove("hide");
+    startTimer();
   });
 
   //Functionality for Return to Home button
@@ -124,11 +127,29 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(".start-screen").classList.add("hide");
     document.querySelector(".container").classList.remove("hide");
     document.querySelector(".score").classList.remove("hide");
+    startTimer();
   });
 
+  function startTimer() {
+    timerBar.style.setProperty("--width", 100);
+    timerIntervalId = setInterval(() => {
+      const computedStyle = getComputedStyle(timerBar);
+      const width =
+        parseFloat(computedStyle.getPropertyValue("--width")) || 100;
+      timerBar.style.setProperty("--width", width - 0.2);
+      if (width <= 2.5){
+        submitBtn.click();
+      }
+    }, 5);
+  }
+
+  function stopTimer() {
+    clearInterval(timerIntervalId);
+  }
+
   submitBtn.addEventListener("click", function () {
+    stopTimer();
     const userInput = fixLatex(answerMathField.latex());
-    console.log("User input is " + userInput);
 
     /*if(userInput===math.derivative(ans)){
       newFunc();
@@ -144,6 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
       answerMathField.latex("");
       score = score + 1;
       scoreBox.innerHTML = "Score: " + score;
+      startTimer();
     } else {
       endGame(userInput);
     }
