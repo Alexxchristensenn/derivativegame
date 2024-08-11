@@ -1,3 +1,4 @@
+import confetti from "https://cdn.skypack.dev/canvas-confetti";
 /*import * as math from 'https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.0.1/math.min.js';*/
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -26,9 +27,11 @@ document.addEventListener("DOMContentLoaded", function () {
   funcMap.set("8", { f: "10x^4", a: "40x^3" });
   funcMap.set("9", { f: "10874", a: "0" });
   funcMap.set("10", { f: "12x^2-8x+2", a: "24x-8" });
+  funcMap.set("99", { f: "test", a: "" });
 
   function randomNum() {
-    return Math.ceil(Math.random() * funcMap.size);
+    return 99;
+    //Math.ceil(Math.random() * funcMap.size);
   }
 
   function newFunc() {
@@ -42,6 +45,22 @@ document.addEventListener("DOMContentLoaded", function () {
     ans = a; //Answer associated with the funciton
     question.innerHTML = func;
     MQ.StaticMath(question);
+  }
+
+  //Makes the input field flash red for incorrect inputs
+  function flashRed(element) {
+    element.classList.add("flash-red");
+    setTimeout(() => {
+      element.classList.remove("flash-red");
+    }, 500);
+  }
+
+  //Makes the container glash green for a correct answer
+  function flashGreen(element) {
+    element.classList.add("flash-green");
+    setTimeout(() => {
+      element.classList.remove("flash-green");
+    }, 500);
   }
 
   function endGame(incorrectAns) {
@@ -136,11 +155,11 @@ document.addEventListener("DOMContentLoaded", function () {
       const computedStyle = getComputedStyle(timerBar);
       const width =
         parseFloat(computedStyle.getPropertyValue("--width")) || 100;
-      timerBar.style.setProperty("--width", width - 0.2);
-      if (width <= 2.5){
-        submitBtn.click();
+      timerBar.style.setProperty("--width", width - 0.5);
+      if (width <= 2.5) {
+        outOfTime();
       }
-    }, 5);
+    }, 1);
   }
 
   function stopTimer() {
@@ -148,6 +167,35 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   submitBtn.addEventListener("click", function () {
+    const userInput = fixLatex(answerMathField.latex());
+
+    /*if(userInput===math.derivative(ans)){
+      newFunc();
+      answerMathField.latex('');
+      score = score + 1;
+      scoreBox.innerHTML = "Score: " + score;
+    } else {
+      endGame(userInput);
+    }*/
+
+    if (isEquivalent(userInput, ans)) {
+      flashGreen(inputLatex);
+      score = score + 1;
+      if (score % 10 == 0) {
+        console.log(score % 10);
+        confetti();
+      }
+      stopTimer();
+      newFunc();
+      answerMathField.latex("");
+      scoreBox.innerHTML = "Score: " + score;
+      startTimer();
+    } else {
+      flashRed(inputLatex);
+    }
+  });
+
+  function outOfTime() {
     stopTimer();
     const userInput = fixLatex(answerMathField.latex());
 
@@ -161,15 +209,20 @@ document.addEventListener("DOMContentLoaded", function () {
     }*/
 
     if (isEquivalent(userInput, ans)) {
+      flashGreen(inputLatex);
+      score = score + 1;
+      if (score % 10 == 0) {
+        console.log(score % 10);
+        confetti();
+      }
       newFunc();
       answerMathField.latex("");
-      score = score + 1;
       scoreBox.innerHTML = "Score: " + score;
       startTimer();
     } else {
       endGame(userInput);
     }
-  });
+  }
 
   //Clicks submit when Enter is pressed
   inputLatex.addEventListener("keypress", function (event) {
