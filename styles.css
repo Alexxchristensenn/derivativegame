@@ -154,7 +154,7 @@ h3 {
 .end-screen {
   background-color: hsl(61, 95%, 78%);
   border-radius: 25px;
-  max-width: 500px;
+  max-width: 700px;
   width: 100%;
   padding: 2em;
   display: flex;
@@ -164,7 +164,7 @@ h3 {
 }
 
 .end-screen h1 {
-  font-size: 3em;
+  font-size: 4em;
   color: #23234c;
   margin-bottom: 0.5em;
 }
@@ -172,13 +172,13 @@ h3 {
 .end-screen h2 {
   font-size: 2em;
   color: #23234c;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 }
 
 .end-screen p {
   font-size: 1.6em;
   color: #23234c;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 }
 
 .end-screen button {
@@ -198,6 +198,22 @@ h3 {
 
 .end-screen button:active {
   background-color: hsl(140, 89%, 90%);
+}
+
+.leaderboard {
+  background-color: hsl(61, 95%, 78%);
+  border-radius: 25px;
+  max-width: 500px;
+  width: 100%;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.leaderboard h1 {
+  font-size: 3em;
 }
 
 #input-latex {
