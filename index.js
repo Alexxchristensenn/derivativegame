@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", function () {
   //Functionality for Return to Home button
   document.getElementById("return-home").addEventListener("click", function () {
     document.querySelector(".end-screen").classList.add("hide");
-    //document.querySelector(".leaderboard").classList.add("hide");
+    document.querySelector(".leaderboard").classList.add("hide");
     document.querySelector(".start-screen").classList.remove("hide");
   });
 
